@@ -31,7 +31,8 @@ def make_label(project, contact, sample_type, date, sample, replicate, num_repli
         string = 'Project:%s\nContact:%s\nType:%s\nDate:%s\nSample:%s\nReplicate:%01d' % (
             project, contact, sample_type, date, sample, replicate)
     else:
-        code = '%s_%s' % (project, sample)
+        code = 'Project:%s\nContact:%s\nType:%s\nDate:%s\nSample:%s' % (
+            project, contact, sample_type, date, sample)
         string = 'Project:%s\nContact:%s\nType:%s\nDate:%s\nSample:%s' % (
             project, contact, sample_type, date, sample)
 
