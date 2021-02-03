@@ -1,0 +1,173 @@
+# Ambient + Disease
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-10-30 \
+  --sample_list Label_A_dis_10-30.txt \
+  --treatment A_Disease \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-11-0 \
+  --sample_list Label_A_dis_11-0.txt \
+  --treatment A_Disease \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-11-10 \
+  --sample_list Label_A_dis_11-10.txt \
+  --treatment A_Disease \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-10- \
+  --sample_list Label_A_dis_Homogenate.txt \
+  --treatment Homogenates \
+  --num_replicates 1
+
+(N+Placebo)
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-10-30 \
+  --sample_list Label_N_Pla_10-30.txt \
+  --treatment N_Placebo \
+  --num_replicates 1
+
+cd labels_RESISTADA/A_Disease
+lualatex labelsheet1_RESISTADA_LCRY1700.tex 
+
+
+# Ambient + Placebo
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-10-30 \
+  --sample_list Label_A_Pla_10-30.txt \
+  --treatment A_Placebo \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-11-0 \
+  --sample_list Label_A_Pla_11-0.txt \
+  --treatment A_Placebo \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-11-10 \
+  --sample_list Label_A_Pla_11-10.txt \
+  --treatment A_Placebo \
+  --num_replicates 1
+
+cd labels_RESISTADA/
+lualatex labelsheet1_RESISTADA_LCRY1700.tex 
+
+
+
+# N + Disease
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-10- \
+  --sample_list Label_N_dis_10-.txt \
+  --treatment N_Disease \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-10-30 \
+  --sample_list Label_N_dis_10-30.txt \
+  --treatment N_Disease \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-11-0 \
+  --sample_list Label_N_dis_11-0.txt \
+  --treatment N_Disease \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-11-10 \
+  --sample_list Label_N_dis_11-10.txt \
+  --treatment N_Disease \
+  --num_replicates 1
+
+cd labels_RESISTADA/
+lualatex labelsheet1_RESISTADA_LCRY1700.tex 
+
+
+# N + PLacebo 
+
+
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-10-2 \
+  --sample_list Label_N_Pla_10-2.txt \
+  --treatment N_Placebo \
+  --num_replicates 1
+
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-11-0 \
+  --sample_list Label_N_Pla_11-0.txt \
+  --treatment N_Placebo \
+  --num_replicates 1
+
+./generate_labels.py \
+  --project RESISTADA \
+  --contact Palacio+Rosales \
+  --sample_type TissueDNA/RNAshield \
+  --date 2020-11-10 \
+  --sample_list Label_N_Pla_11-10.txt \
+  --treatment N_Placebo \
+  --num_replicates 1
+
+cd labels_RESISTADA/
+lualatex labelsheet1_RESISTADA_LCRY1700.tex 
+
+
+
+cd labels_RESISTADA/
+lualatex labelsheet1_RESISTADA_LCRY1700.tex 
+lualatex labelsheet2_RESISTADA_LCRY1700.tex 
+
+
+### Add treatment
+
+

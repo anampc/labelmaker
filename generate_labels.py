@@ -22,19 +22,19 @@ def create_directory(project):
     if not os.path.exists(newdir):
         os.makedirs(newdir)
 
-def make_label(project, contact, sample_type, date, sample, replicate, num_replicates, label_width, label_height):
+def make_label(project, contact, sample_type, date, sample, treatment, replicate, num_replicates, label_width, label_height):
 
     # generate text code and qr code
-    # longcode = '%s_%s_%s_%s_%s_%01d' % (project, contact, sample_type, date, sample, replicate)
+    # longcode = '%s_%s_%s_%s_%s_%01d' % (project, contact, sample_type, date, sample, treatment, replicate)
     if (num_replicates > 1):
         code = '%s_%s_%01d' % (project, sample, replicate)
         string = 'Project:%s\nContact:%s\nType:%s\nDate:%s\nSample:%s\nReplicate:%01d' % (
             project, contact, sample_type, date, sample, replicate)
     else:
-        code = 'Project:%s\nContact:%s\nType:%s\nDate:%s\nSample:%s' % (
-            project, contact, sample_type, date, sample)
-        string = 'Project:%s\nContact:%s\nType:%s\nDate:%s\nSample:%s' % (
-            project, contact, sample_type, date, sample)
+        code = 'Contact:%s\nType:%s\nDate:%s\nSample:%s\nTreatment:%s' % (
+                contact, sample_type, date, sample, treatment)
+        string = 'Project:%s\nContact:%s\nType:%s\nDate:%s\nSample:%s\nTreatment:%s' % (
+                project, contact, sample_type, date, sample, treatment)
 
     # make qr code
     qr = qrcode.QRCode(
@@ -51,7 +51,7 @@ def make_label(project, contact, sample_type, date, sample, replicate, num_repli
     label = Image.new('RGB', (int(img.height*label_width/label_height), img.height), color='white')
     label.paste(img, (0,0))
     draw = ImageDraw.Draw(label)
-    font = ImageFont.truetype('Monaco.dfont', 32)
+    font = ImageFont.truetype('Monaco.dfont', 40)
     draw.text(((img.height * 0.85), int(img.height * 0.18)), string, (0,0,0), font=font)
     if (num_replicates > 1):
         label.save('labels_%s/label_%s_%01d.png' % (project, sample, replicate))
@@ -71,6 +71,8 @@ def make_label(project, contact, sample_type, date, sample, replicate, num_repli
               help="List of samples. If none is provided, samples will be numbered 1 to num_samples.")
 @click.option('--num_samples', '-s', required=False, type=int, default=5,
               help="Number of unique samples; ignored if sample_list provided. [default=5]")
+@click.option('--treatment', '-z', required=True, type=str,
+              help="Treatment. Must not contain spaces.")
 @click.option('--num_replicates', '-r', required=False, type=int, default=1,
               help="Number of replicates per sample. [default=1 (i.e. no replicates)]")
 @click.option('--label_width', '-w', required=False, type=float, default=1.05,
@@ -78,7 +80,7 @@ def make_label(project, contact, sample_type, date, sample, replicate, num_repli
 @click.option('--label_height', '-h', required=False, type=float, default=0.5,
               help="Height of label in inches. 0.5 works for 0.5in labels. [default=0.05]")
 
-def main(project, contact, sample_type, date, sample_list, num_samples, num_replicates, label_width, label_height):
+def main(project, contact, sample_type, date, sample_list, num_samples, treatment, num_replicates, label_width, label_height):
 
     create_directory(project)
 
@@ -100,7 +102,7 @@ def main(project, contact, sample_type, date, sample_list, num_samples, num_repl
         for replicate in np.arange(num_replicates) + 1:
             tex_counter += 1
             this_sheet = math.ceil(tex_counter / 85)
-            make_label(project, contact, sample_type, date, sample, replicate, num_replicates, label_width, label_height)
+            make_label(project, contact, sample_type, date, sample, treatment, replicate, num_replicates, label_width, label_height)
             if (num_replicates > 1):
                 tex_table[this_sheet] += '\\includegraphics[width=\\w]{label_%s_%01d} & ' % (sample, replicate)
             else:
